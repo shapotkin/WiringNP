@@ -197,15 +197,15 @@ static char *physNames_neo [MAX_PIN_COUNT] =
  "    3.3V", "5V      ",
  " GPIOA12", "5V      ",
  " GPIOA11", "0v      ",
- " GPIOG11", "GPIOG6  ",
+ "   ASA 2", "GPIOG6  ",
  "      0v", "GPIOG7  ",
- "  GPIOA0", "GPIOA6  ",
- "  GPIOA2", "0v      ",
- "  GPIOA3", "GPIOG8  ",
+ "  GPIOA0", "ASA 3   ",
+ "   ASA 1", "0v      ",
+ "   ASA 0", "GPIOG8  ",
  "    3.3v", "GPIOG9  ",
- "  GPIOC0", "0v      ",
- "  GPIOC1", "GPIOA1  ",
- "  GPIOC2", "GPIOC3  ",
+ "ATT DATA", "0v      ",
+ "  LE AMP", "STROBE  ",
+ " ATT CLK", "LE      ",
 
  /* 12 Pin */
  "      5V", " USB-DP1",      //25, 26  -> 1, 2
@@ -407,90 +407,6 @@ static char *physNames_duo2 [MAX_PIN_COUNT] =
        NULL            //73
 } ;
 
-static int physToWpi_t3 [MAX_PIN_COUNT] =
-{
-  -1,        // 0
-  -1,  -1,   // 1, 2
-   3,   4,   // 3, 4
-  -1,  -1,   // 5, 6
-   7,   8,   // 7, 8
-
-   9,  10,   // 9, 10
-  11,  12,   //11, 12
-  13,  14,   //13, 14
-  15,  16,   //15, 16
-  17,  18,   //17, 18
-  19,  20,   //19, 20
-  21,  22,   //21, 22
-  23,  24,   //23, 24
-
-  25,  -1,   //25, 26
-  27,  -1,   //27, 28
-  -1,  -1,   //29, 30
-  -1,  -1,   //31, 32
-
-
-   /* ---------nanopi duo end----------- */
-  -1,  -1,   //33, 34
-  -1,  -1,   //35, 36
-
-  -1,  -1,   //37, 38
-
-    /* 39~63 */
-    -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
-    -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
-
-    /* 64~73 */
-    -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
-} ;
-
-static char *physNames_t3 [MAX_PIN_COUNT] = 
-{
-  NULL,
-// 32 Pin 
- "    3.3v", "0v      ",
- " GPIOD20", "GPIOD16 ", 
- "I2C0_SCL", "I2C0_SDA",
- " GPIOC31", "GPIOD0  ",
- " GPIOC29", "GPIOC30 ",
- " GPIOD21", "GPIOD17 ",
- " GPIOB29", "GPIOB28 ",  //13, 14
- " GPIOB31", "GPIOB30 ",
- "  GPIOC4", "GPIOC7  ",
- "  GPIOC8", "GPIOC24 ",
- " GPIOC28", "GPIOB26 ",
- "  GPIOD1", "GPIOD8  ",
- " GPIOC13", "AliGPIO3",  //25, 26
- " GPIOC14", "AliGPIO5",
- "      5v", "0v      ",
-
- /* ---------nanopc t3 end----------- */
-       NULL, NULL,
-       NULL, NULL,
-       NULL, NULL,
-
-/* UART0, tx, rx */
-       NULL, NULL, 
-
-       NULL, NULL,     //39, 40
-       NULL, NULL,
-       NULL, NULL,
-       NULL, NULL,
-       NULL, NULL,
-       NULL, NULL,     //49, 50
-       NULL, NULL,
-       NULL, NULL,
-       NULL, NULL,
-       NULL, NULL,
-       NULL, NULL,     //59, 60
-       NULL, NULL,
-       NULL, NULL,
-       NULL, NULL,
-       NULL, NULL,
-       NULL, NULL,
-       NULL, NULL,     //71, 72
-       NULL            //73
-} ;
 
 static int physToWpi_neocore [MAX_PIN_COUNT] =
 {
@@ -544,30 +460,30 @@ static char *physNames_neocore [MAX_PIN_COUNT] =
   NULL,                 // 0
  /* GPIO-1 24Pin */
  "    3.3v", "5v      ",   // 1, 2  -> 1, 2
- " GPIOA12", "5v      ",   // 3, 4  -> 3, 4
- " GPIOA11", "0v      ",   // 5, 6  -> 5, 6
- " GPIOG11", "GPIOG6  ",   // 7, 8  -> 7, 8
- "      0v", "GPIOG7  ",   // 9, 10  -> 9, 10
- "  GPIOA0", "GPIOA6  ",   //11, 12  -> 11, 12
- "  GPIOA2", "0v      ",   //13, 14  -> 13, 14
- "  GPIOA3", "GPIOG8  ",   //15, 16  -> 15, 16
- "    3.3v", "GPIOG9  ",   //17, 18  -> 17, 18
- "  GPIOC0", "0v      ",   //19, 20  -> 19, 20
- "  GPIOC1", "GPIOA1  ",   //21, 22  -> 21, 22
- "  GPIOC2", "GPIOC3  ",   //23, 24  -> 23, 24
+ "-GPIOA12", "5v      ",   // 3, 4  -> 3, 4
+ "-GPIOA11", "0v      ",   // 5, 6  -> 5, 6
+ "   ASA 2", "GPIOG6 *",   // 7, 8  -> 7, 8
+ "      0v", "GPIOG7 *",   // 9, 10  -> 9, 10
+ "- GPIOA0", "ASA 3   ",   //11, 12  -> 11, 12
+ "   ASA 1", "0v      ",   //13, 14  -> 13, 14
+ "   ASA 0", "GPIOG8 -",   //15, 16  -> 15, 16
+ "    3.3v", "GPIOG9 -",   //17, 18  -> 17, 18
+ "ATT DATA", "0v      ",   //19, 20  -> 19, 20
+ "  LE AMP", "STROBE  ",   //21, 22  -> 21, 22
+ " ATT CLK", "LE      ",   //23, 24  -> 23, 24
 
  /* GPIO-2 24Pin */
- "      5v", "GPIOA15 ",   //25, 26  -> 1, 2
- "    USB1", "GPIOA16 ",   //27, 28  -> 3, 4
- "    USB1", "GPIOA14 ",   //29, 30  -> 5, 6
- "    USB2", "GPIOA13 ",   //31, 32  -> 7, 8
- "    USB2", "Mic     ",   //33, 34  -> 9, 10
- "      IR", "Mic     ",   //35, 36  -> 11, 12   " GPIOL11"
- " GPIOA17", "Audio   ",   //37, 38  -> 13, 14
- "     I2S", "Audio   ",   //39, 40  -> 15, 16
- "     I2S", "GPIOA5  ",   //41, 42  -> 17, 18
- "     I2S", "GPIOA4  ",   //43, 44  -> 19, 20
- "     I2S", "5V      ",   //45, 46  -> 21, 22
+ "      5v", "ADC MOSI",   //25, 26  -> 1, 2
+ "-   USB1", "ADC MISO",   //27, 28  -> 3, 4
+ "-   USB1", "ADC CLK ",   //29, 30  -> 5, 6
+ "-   USB2", "ADC CS  ",   //31, 32  -> 7, 8
+ "-   USB2", "Mic    -",   //33, 34  -> 9, 10
+ "-     IR", "Mic    -",   //35, 36  -> 11, 12   " GPIOL11"
+ "  ADC A0", "Audio  -",   //37, 38  -> 13, 14
+ "-    I2S", "Audio  -",   //39, 40  -> 15, 16
+ "-    I2S", "GPIOA5 -",   //41, 42  -> 17, 18
+ "-    I2S", "GPIOA4 -",   //43, 44  -> 19, 20
+ "-    I2S", "5V      ",   //45, 46  -> 21, 22
  "      0v", "0v      ",   //47, 48  -> 23, 24
 
  /* GPIO-3 20Pin */
@@ -577,9 +493,9 @@ static char *physNames_neocore [MAX_PIN_COUNT] =
  "      NC", "NC      ",   //55, 56  -> 7, 8
  "      NC", "NC      ",   //57, 58  -> 9, 10
  "      0v", "0v      ",   //59, 60  -> 11, 12
- "    USB3", "GPIOA7  ",   //61, 62  -> 13, 14
- "    USB3", "GPIOE12 ",   //63, 64  -> 15, 16
- "      5v", "GPIOE13 ",   //65, 66  -> 17, 18
+ "*   USB3", "ADC A1  ",   //61, 62  -> 13, 14
+ "*   USB3", "GPIOE12-",   //63, 64  -> 15, 16
+ "      5v", "GPIOE13-",   //65, 66  -> 17, 18
  "      5v", "3.3v    ",   //67, 68  -> 19, 20
 
        NULL, NULL,         //69, 70  -> 21, 22
@@ -617,9 +533,6 @@ static void readallPhys (int faBoardId, int physPin, int pair)
   } else if (faBoardId == NanoPi_NEO_Core || faBoardId == NanoPi_NEO_Core2) {
       physToWpi = physToWpi_neocore;
       physNames = physNames_neocore;
-  } else if (faBoardId == NanoPC_T3) {
-      physToWpi = physToWpi_t3;
-      physNames = physNames_t3;
   } else {
       return ;
   }
@@ -725,9 +638,6 @@ static void debugReadallPhys (int faBoardId, int physPin)
   } else if (faBoardId == NanoPi_NEO_Core || faBoardId == NanoPi_NEO_Core2) {
       physToWpi = physToWpi_neocore;
       physNames = physNames_neocore;
-  } else if (faBoardId == NanoPC_T3) {
-      physToWpi = physToWpi_t3;
-      physNames = physNames_t3;
   } else {
       return ;
   }
@@ -767,12 +677,8 @@ void NanoPiReadAll()
         && retBoardInfo->boardTypeId <= ALLWINNER_MAX 
         && retBoardInfo->boardTypeId != NanoPi_A64) {
           // nothing to do.
-      } else if(retBoardInfo->boardTypeId == NanoPC_T3) {       
-        printf ("This NanoPC-T3  is only supported GPIO input and GPIO out. \n") ;
-        printf("Please becareful to use this !!! \n");
       } else {
         printf ("This NanoPi model is currently not supported. \n") ;
-        printf ("This NanoPi's boardTypeId is %d .\n",retBoardInfo->boardTypeId);
         return ;
       }
   } else {
@@ -799,15 +705,10 @@ void NanoPiReadAll()
   } else if (retBoardInfo->boardTypeId == NanoPi_Duo 
     || retBoardInfo->boardTypeId == NanoPi_Duo2) {
       pinCount = 32;
-  } else if (retBoardInfo->boardTypeId == NanoPC_T3) {
-      pinCount = 30;
   } else {
       printf ("This NanoPi model(id: %d) is currently not supported. \n", retBoardInfo->boardTypeId) ;
       return ;
   }
-  if (getenv("WIRINGPI_DEBUG") != NULL)
-    printf("This pinCount num is %d .\nDEBUG_READALL is %d.\nwpMode is %d .\n",
-           pinCount, DEBUG_READALL, wpMode);
 
   if (DEBUG_READALL) {
     printf (" +-----+-----+----------+------+---+-%s--+------+----------+-----+-----+\n", retBoardInfo->boardDisplayName) ;

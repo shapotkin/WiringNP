@@ -1,3 +1,7 @@
+#Revision
+for Strogino/Tver projects
+put sys_info to the /usr/local/etc
+
 # WiringNP
 This is a GPIO access library for NanoPi. It is based on the WiringOP for Orange PI which is based on original WiringPi for Raspberry Pi.
 
